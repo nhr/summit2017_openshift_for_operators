@@ -1,0 +1,30 @@
+apiVersion: "v1"
+kind: "LimitRange"
+metadata:
+ name: "limits"
+spec:
+ limits:
+   -
+     type: "Pod"
+     max:
+       cpu: "400m"
+       memory: "200M"
+     min:
+       cpu: "100m"
+       memory: "50M"
+   -
+     type: "Container"
+     max:
+       cpu: "200m"
+       memory: "100M"
+     min:
+       cpu: "50m"
+       memory: "10M"
+     default:
+       cpu: "200m"
+       memory: "100M"
+     defaultRequest:
+       cpu: "200m"
+       memory: "100M"
+     maxLimitRequestRatio:
+       cpu: "4"
