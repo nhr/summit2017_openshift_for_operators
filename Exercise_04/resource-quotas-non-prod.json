@@ -10,7 +10,7 @@
      "memory": "200M",
      "pods": "2",
      "services": "1",
-     "replicationcontrollers":"1",
+     "replicationcontrollers":"2",
      "resourcequotas":"1"
    }
  }
