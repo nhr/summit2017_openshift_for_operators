@@ -6,11 +6,10 @@
  },
  "spec": {
    "hard": {
-     "cpu": "400m",
-     "memory": "200M",
-     "pods": "2",
-     "services": "1",
-     "replicationcontrollers":"2",
+     "cpu": "800m",
+     "memory": "400M",
+     "pods": "4",
+     "services": "2",
      "resourcequotas":"1"
    }
  }
