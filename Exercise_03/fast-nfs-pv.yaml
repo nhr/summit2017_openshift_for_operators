@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+ name: pv-nfs-fast
+ annotations:
+   volume.beta.kubernetes.io/storage-class: nfs-fast
+spec:
+ capacity:
+   storage: 10Gi
+ accessModes:
+   - ReadWriteMany
+ nfs:
+   path: /exports/nfs_fast
+   server: ose3-master.example.com
+ persistentVolumeReclaimPolicy: Retain
