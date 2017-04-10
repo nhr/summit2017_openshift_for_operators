@@ -1,6 +1,6 @@
 kind: StorageClass
 apiVersion: storage.k8s.io/v1beta1
 metadata:
-  name: nfs-fast 
-provisioner: no-provisioning 
-parameters:
+  name: nfs-fast
+provisioner: no-provisioning
+parameters: null

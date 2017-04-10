@@ -1,27 +1,22 @@
 kind: LDAPSyncConfig
 apiVersion: v1
-url: "ldap://ose3-ldap.example.com"
-insecure: false
-ca: "/etc/origin/master/ipa-ca.crt"
-bindDN: "uid=admin,cn=users,cn=accounts,dc=example,dc=com"
-bindPassword: "r3dh4t1!"
+url: ldap://ose3-ldap.example.com
+ca: /etc/origin/master/ipa-ca.crt
+bindDN: uid=admin,cn=users,cn=accounts,dc=example,dc=com
+bindPassword: r3dh4t1!
 rfc2307:
-   groupsQuery:
-       baseDN: "cn=groups,cn=accounts,dc=example,dc=com"
-       scope: sub
-       derefAliases: never
-       filter: (&(!(objectClass=mepManagedEntry))(!(cn=trust admins))(!(cn=groups))(!(cn=admins))(!(cn=ipausers))(!(cn=editors))(!(cn=ocp-users))(!(cn=evmgroup*))(!(cn=ipac*)))
-   groupUIDAttribute: dn
-   groupNameAttributes: [ cn ]
-   groupMembershipAttributes: [ member ]
-   usersQuery:
-       baseDN: "cn=users,cn=accounts,dc=example,dc=com"
-       scope: sub
-       derefAliases: never
-   userUIDAttribute: dn
-   userNameAttributes: [ uid ]
-groupUIDNameMapping:
- "cn=portalapp,cn=groups,cn=accounts,dc=example,dc=com": "portalapp"
- "cn=paymentapp,cn=groups,cn=accounts,dc=example,dc=com": "paymentapp"
- "cn=ocp-production,cn=groups,cn=accounts,dc=example,dc=com": "ocp-production"
- "cn=ocp-platform,cn=groups,cn=accounts,dc=example,dc=com": "ocp-platform"
+  groupsQuery:
+    baseDN: cn=groups,cn=accounts,dc=example,dc=com
+    derefAliases: never
+    filter: '(|(cn=ocp-*)(cn=*app))'
+  groupUIDAttribute: dn
+  groupNameAttributes:
+  - cn
+  groupMembershipAttributes:
+  - member
+  usersQuery:
+    baseDN: cn=users,cn=accounts,dc=example,dc=com
+    derefAliases: never
+  userUIDAttribute: dn
+  userNameAttributes:
+  - uid
