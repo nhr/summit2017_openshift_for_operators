@@ -1,0 +1,29 @@
+
+[OSEv3:children]
+nodes
+nfs
+masters
+etcd
+
+[OSEv3:vars]
+openshift_master_cluster_public_hostname=None
+ansible_ssh_user=root
+openshift_master_cluster_hostname=None
+deployment_type=openshift-enterprise
+openshift_master_identity_providers=[{'name': 'idm', 'challenge': 'true', 'login': 'true', 'kind': 'LDAPPasswordIdentityProvider', 'attributes': {'id': ['dn'], 'email': ['mail'], 'name': ['cn'], 'preferredUsername': ['uid']}, 'bindDN': 'uid=admin,cn=users,cn=accounts,dc=example,dc=com', 'bindPassword': '<PASSWORD_VALUE>', 'ca': '/etc/origin/master/ipa-ca.crt', 'insecure': 'false', 'url': 'ldap://ose3-ldap.example.com/cn=users,cn=accounts,dc=example,dc=com?uid?sub?(memberOf=cn=ocp-users,cn=groups,cn=accounts,dc=example,dc=com)'}]
+osm_default_node_selector='env=user'
+os_sdn_network_plugin_name='redhat/openshift-ovs-multitenant'
+
+[nodes]
+ose3-master.example.com  openshift_public_ip=192.168.133.2 openshift_ip=192.168.133.2 openshift_public_hostname=ose3-master.example.com openshift_hostname=ose3-master.example.com connect_to=ose3-master.example.com openshift_schedulable=True openshift_node_labels="{'region':'tatooine','zone':'na','env':'infra'}" ansible_connection=local
+ose3-node1.example.com  openshift_public_ip=192.168.133.3 openshift_ip=192.168.133.3 openshift_public_hostname=ose3-node1.example.com openshift_hostname=ose3-node1.example.com connect_to=ose3-node1.example.com openshift_node_labels="{'region': 'tatooine', 'zone': 'cantina','env':'user'}" openshift_schedulable=True
+ose3-node2.example.com  openshift_public_ip=192.168.133.4 openshift_ip=192.168.133.4 openshift_public_hostname=ose3-node2.example.com openshift_hostname=ose3-node2.example.com connect_to=ose3-node2.example.com openshift_node_labels="{'region': 'tatooine', 'zone': 'farm','env':'user'}" openshift_schedulable=True
+
+[nfs]
+ose3-master.example.com  openshift_public_ip=192.168.133.2 openshift_ip=192.168.133.2 openshift_public_hostname=ose3-master.example.com openshift_hostname=ose3-master.example.com connect_to=ose3-master.example.com ansible_connection=local
+
+[masters]
+ose3-master.example.com  openshift_public_ip=192.168.133.2 openshift_ip=192.168.133.2 openshift_public_hostname=ose3-master.example.com openshift_hostname=ose3-master.example.com connect_to=ose3-master.example.com ansible_connection=local
+
+[etcd]
+ose3-master.example.com  openshift_public_ip=192.168.133.2 openshift_ip=192.168.133.2 openshift_public_hostname=ose3-master.example.com openshift_hostname=ose3-master.example.com connect_to=ose3-master.example.com ansible_connection=local

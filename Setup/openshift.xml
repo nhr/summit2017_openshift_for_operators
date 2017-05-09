@@ -1,0 +1,40 @@
+<!--
+WARNING: THIS IS AN AUTO-GENERATED FILE. CHANGES TO IT ARE LIKELY TO BE
+OVERWRITTEN AND LOST. Changes to this xml configuration should be made using:
+  virsh net-edit openshift
+or other application using the libvirt API.
+-->
+
+<network>
+  <name>openshift</name>
+  <uuid>fc43091e-ce20-4af4-973b-99468b9f3d8a</uuid>
+  <forward mode='nat'>
+    <nat>
+      <port start='1024' end='65535'/>
+    </nat>
+  </forward>
+  <bridge name='virbr44232' stp='on' delay='0'/>
+  <mac address='52:54:00:29:3d:d7'/>
+  <domain name='example.com'/>
+  <dns>
+    <host ip='192.168.133.2'>
+      <hostname>ose3-master.example.com</hostname>
+    </host>
+    <host ip='192.168.133.3'>
+      <hostname>ose3-node1.example.com</hostname>
+    </host>
+    <host ip='192.168.133.4'>
+      <hostname>ose3-node2.example.com</hostname>
+    </host>
+  </dns>
+  <ip address='192.168.133.1' netmask='255.255.255.0'>
+    <dhcp>
+      <range start='192.168.133.2' end='192.168.133.254'/>
+      <host mac='52:54:00:b3:3d:1d' name='ose3-master.example.com' ip='192.168.133.2'/>
+      <host mac='52:54:00:b3:3d:1e' name='ose3-node1.example.com' ip='192.168.133.3'/>
+      <host mac='52:54:00:b3:3d:1f' name='ose3-node2.example.com' ip='192.168.133.4'/>
+      <host mac='52:54:00:b3:3d:1c' name='base.example.com' ip='192.168.133.200'/>
+      <host mac='52:54:00:b3:3d:1b' name='ose3-ldap.example.com' ip='192.168.133.201'/>
+    </dhcp>
+  </ip>
+</network>
