@@ -9,5 +9,5 @@ oadm policy add-role-to-group admin portalapp -n portalapp-dev
 oadm policy add-role-to-group admin portalapp -n portalapp-test
 
 echo "Granting group 'ocp-production' admin rights in the portalapp-prod & paymentapp-prod projects."
-oadm policy add-role-to-group admin ose-production -n portalapp-prod
-oadm policy add-role-to-group admin ose-production -n paymentapp-prod
+oadm policy add-role-to-group admin ocp-production -n portalapp-prod
+oadm policy add-role-to-group admin ocp-production -n paymentapp-prod
